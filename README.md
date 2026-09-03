@@ -4,8 +4,6 @@
 
 - Christopher Roan
 - Nobert Akas
-- [Team Member]
-- [Team Member]
 
 ## Description
 
