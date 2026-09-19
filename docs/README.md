@@ -66,3 +66,12 @@ Performance - ToolPool should respond to inputs in less than 5 seconds.
 Availability/Reliability - ToolPool should be available to people everywhere who create accounts for it. 
 Security/Privacy - User data should be protected at all times.
 Usability - New users should be able to create new accounts in 10 minutes or less. 
+
+### 5. Assumptions, Constraints, and Policies
+1. Users are expected to create an account before using ToolPool and have at least a phone number or email.
+2. The project must be completed by the end of the fall 2026 UNCG semester.
+
+### 6. Change Management
+1. Changes and issues should be handled in GitHub.
+2. Any new features should be added to this file.
+3. At least one other person should review new changes.
