@@ -94,3 +94,34 @@
     When another user views that user's profile
     Then the system displays the reviews associated with that user
   ```
+### 3. User Stories 
+
+1. As a system admin, I want to be able to remove profiles that are suspicious, so that I can help maintain a safe and trustworthy platform.
+
+2. As a user, I want to be able to quickly book a nearby tool, so that I can complete my job quickly.
+
+3. As a user, I want to be able to unlist my tool, so that I can easily stop renting out my tool when I want to.
+
+4. As a user, I want to be able to create a user account, so that I can rent out tools.
+
+5. As a user, I want to be able to view a list of available tools, so that I can choose a tool to rent.
+
+6. As a system admin, I want to be able to see a list of reported users, so that I can review them and remove them if necessary.
+
+7. As a user, I want to be able to view another user's profile, so that I can contact them to rent out a tool.
+
+
+### 4. Non-Functional Requirements
+Performance - ToolPool should respond to inputs in less than 5 seconds.
+Availability/Reliability - ToolPool should be available to people everywhere who create accounts for it. 
+Security/Privacy - User data should be protected at all times.
+Usability - New users should be able to create new accounts in 10 minutes or less. 
+
+### 5. Assumptions, Constraints, and Policies
+1. Users are expected to create an account before using ToolPool and have at least a phone number or email.
+2. The project must be completed by the end of the fall 2026 UNCG semester.
+
+### 6. Change Management
+1. Changes and issues should be handled in GitHub.
+2. Any new features should be added to this file.
+3. At least one other person should review new changes.
