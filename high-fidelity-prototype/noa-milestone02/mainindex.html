@@ -12,6 +12,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 
+<script>
+
+    function goToPostTool() {
+
+        // Check whether the user is signed in
+        const loggedIn = localStorage.getItem("loggedIn");
+
+        if (loggedIn === "true") {
+
+            // User is already signed in
+            window.location.href = "loginform.html";
+
+        } else {
+
+            // User is not signed in
+            window.location.href = "login.html";
+
+        }
+
+    }
+
+</script>
+
 <body>
 
     <!-- =========================
@@ -35,7 +58,7 @@
 
 
     <!-- =========================
-         MAIN CONTENT
+         MAIN 
     ========================== -->
 
     <main>
@@ -43,7 +66,7 @@
         <section class="hero">
 
             <!-- =========================
-                 INTRODUCTION
+                 INTRO
             ========================== -->
 
             <div class="intro">
@@ -76,8 +99,11 @@
                     See Listings in Your Area
                 </button>
 
-                <button onclick="window.location.href='loginform.html'">
-                    Put Your Tool Up for Rent
+                <button    
+                class="large-action-button"
+                onclick="goToPostTool()"
+                >
+                Put Your Tool Up for Rent
                 </button>
 
             </div>
