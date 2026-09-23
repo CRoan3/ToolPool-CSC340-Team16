@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | ToolPool</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>ToolPool</h1>
+
+      <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Reported Users</a>
+        <a href="#">Log Out</a>
+      </nav>
+    </header>
+
+    <main class="admin-main">
+      <div class="admin-heading">
+        <h2>Admin Dashboard</h2>
+        <p>Monitor ToolPool users and review reported accounts.</p>
+      </div>
+
+      <section class="admin-stats">
+        <div class="stat-card">
+          <h3>142</h3>
+          <p>Total Users</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>87</h3>
+          <p>Active Listings</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>24</h3>
+          <p>Active Rentals</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>3</h3>
+          <p>Reported Users</p>
+        </div>
+      </section>
+
+      <section class="reported-users">
+        <h2>Reported Users</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Reports</th>
+              <th>Reason</th>
+              <th>Account Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Bob123</td>
+              <td>3</td>
+              <td>Fraudulent listing</td>
+              <td>Active</td>
+              <td>
+                <button class="view-button">View</button>
+                <button class="remove-button">Remove</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>JohnDoe</td>
+              <td>2</td>
+              <td>Tool not returned</td>
+              <td>Active</td>
+              <td>
+                <button class="view-button">View</button>
+                <button class="remove-button">Remove</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>JaneSmith</td>
+              <td>1</td>
+              <td>Damaged tool dispute</td>
+              <td>Active</td>
+              <td>
+                <button class="view-button">View</button>
+                <button class="remove-button">Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 ToolPool</p>
+    </footer>
+  </body>
+</html>
