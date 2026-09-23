@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>ToolPool - Post a Tool</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <h1>
+            <a href="mainindex.html">ToolPool</a>
+        </h1>
+
+        <nav>
+            <a href="listings.html">Listings</a>
+            <a href="signup.html">Login / Sign Up</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         POST TOOL FORM
+    ========================== -->
+
+    <main>
+
+        <section class="post-listing-container">
+
+            <h2>Post Your Tool for Rent</h2>
+
+            <p>
+                Add information about your tool so people in your
+                area can find and rent it.
+            </p>
+
+
+            <form onsubmit="submitListing(event)">
+
+
+                <!-- NAME -->
+
+                <label for="owner-name">
+                    Your Name
+                </label>
+
+                <input
+                    type="text"
+                    id="owner-name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <!-- TOOL NAME -->
+
+                <label for="tool-name">
+                    Tool Name
+                </label>
+
+                <input
+                    type="text"
+                    id="tool-name"
+                    placeholder="Example: Power Drill"
+                    required
+                >
+
+
+                <!-- TOOL TYPE -->
+
+                <label for="tool-type">
+                    Type of Tool
+                </label>
+
+                <select
+                    id="tool-type"
+                    required
+                >
+
+                    <option value="">
+                        Select a tool type
+                    </option>
+
+                    <option value="Power Tool">
+                        Power Tool
+                    </option>
+
+                    <option value="Hand Tool">
+                        Hand Tool
+                    </option>
+
+                    <option value="Outdoor Equipment">
+                        Outdoor Equipment
+                    </option>
+
+                    <option value="Construction Equipment">
+                        Construction Equipment
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+
+                <!-- DESCRIPTION -->
+
+                <label for="description">
+                    Short Description
+                </label>
+
+                <textarea
+                    id="description"
+                    placeholder="Describe your tool..."
+                    required
+                ></textarea>
+
+
+                <!-- PICTURE -->
+
+                <label for="tool-picture">
+                    Tool Picture
+                </label>
+
+                <input
+                    type="file"
+                    id="tool-picture"
+                    accept="image/*"
+                    required
+                >
+
+
+                <!-- AVAILABILITY -->
+
+                <label for="start-date">
+                    Available From
+                </label>
+
+                <input
+                    type="date"
+                    id="start-date"
+                    required
+                >
+
+
+                <label for="end-date">
+                    Available Until
+                </label>
+
+                <input
+                    type="date"
+                    id="end-date"
+                    required
+                >
+
+
+                <!-- CONTACT -->
+
+                <label for="contact">
+                    Phone Number or Email
+                </label>
+
+                <input
+                    type="text"
+                    id="contact"
+                    placeholder="Phone number or email"
+                    required
+                >
+
+
+                <!-- SUBMIT -->
+
+                <button type="submit">
+                    Post Tool Listing
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            ToolPool &copy; 2026
+        </p>
+
+        <p>
+            Rent tools. Share tools. Help your community.
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function submitListing(event) {
+
+            event.preventDefault();
+
+            alert("Your tool listing has been posted!");
+
+            window.location.href = "listings.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

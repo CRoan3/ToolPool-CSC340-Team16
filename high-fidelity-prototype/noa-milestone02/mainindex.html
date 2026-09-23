@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ToolPool - Rent Tools Near You</title>
+
+    <!-- Connects to CSS file -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<script>
+
+    function goToPostTool() {
+
+        // Check whether the user is signed in
+        const loggedIn = localStorage.getItem("loggedIn");
+
+        if (loggedIn === "true") {
+
+            // User is already signed in
+            window.location.href = "loginform.html";
+
+        } else {
+
+            // User is not signed in
+            window.location.href = "login.html";
+
+        }
+
+    }
+
+</script>
+
+<body>
+
+    <!-- =========================
+         HEADER / NAVIGATION
+    ========================== -->
+
+    <header>
+
+        <!-- ToolPool logo acts as Home button -->
+        <h1>
+            <a href="index.html">ToolPool</a>
+        </h1>
+
+        <nav>
+        
+            <a href="listings.html">Listings</a>
+            <a href="signup.html">Login / Sign Up</a>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN 
+    ========================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <!-- =========================
+                 INTRO
+            ========================== -->
+
+            <div class="intro">
+
+                <h2>Rent Tools Near You</h2>
+
+                <p>
+                    ToolPool is a community marketplace that makes it
+                    easy to rent tools from people in your local area.
+                </p>
+
+                <p>
+                    Need a tool for a project but don't want to buy one?
+                    ToolPool allows you to find tools nearby that are
+                    available for rent.
+                </p>
+
+                <p>
+                    Have tools that you don't use often? You can also
+                    post your own tools on ToolPool and make them
+                    available for people in your area to rent.
+                </p>
+
+
+                <!-- =========================
+                   main actions
+                ========================== -->
+
+                <button onclick="window.location.href='listings.html'">
+                    See Listings in Your Area
+                </button>
+
+                <button    
+                class="large-action-button"
+                onclick="goToPostTool()"
+                >
+                Put Your Tool Up for Rent
+                </button>
+
+            </div>
+
+
+<!--tool listings-->
+
+
+
+
+
+
+
+<div class="tool-list">
+
+
+    <!-- TOOL CARD 1 -->
+
+    <div class="tool-card">
+
+        <img
+            src="images/powerdrill.jpg"
+            alt="Power Drill"
+            width="100%"
+            height="150"
+        >
+
+        <h4>Cordless Drill</h4>
+
+        <p>
+           4.9/5
+        </p>
+
+        <p>
+            24 reviews
+        </p>
+
+        <button onclick="window.location.href='tool-details.html'">
+            View Tool
+        </button>
+
+    </div>
+
+
+    
+
+    <div class="tool-card">
+
+        <img
+            src="images/powerwasher.jpg"
+            alt="Pressure Washer"
+            width="100%"
+            height="150"
+        >
+
+        <h4>Pressure Washer</h4>
+
+        <p>
+            4.7/5
+        </p>
+
+        <p>
+            18 reviews
+        </p>
+
+        <button onclick="window.location.href='tool-details.html'">
+            View Tool
+        </button>
+
+    </div>
+
+
+    
+
+    <div class="tool-card">
+
+        <img
+            src="images/powersaw.jpg"
+            alt="Saw"
+            width="100%"
+            height="150"
+        >
+
+        <h4>Power Saw</h4>
+
+        <p>
+            5/5
+        </p>
+
+        <p>
+            12 reviews
+        </p>
+
+        <button onclick="window.location.href='tool-details.html'">
+            View Tool
+        </button>
+
+    </div>
+
+</div>
+
+        </section>
+
+
+
+        <!-- =========================
+             explaination of how to post a tool
+        ========================== -->
+
+        <section class="hero">
+
+            <div class="intro">
+
+                <h2>Have a Tool You Want to Rent Out?</h2>
+
+                <p>
+                    Turn tools you aren't currently using into
+                    useful resources for people in your community.
+                </p>
+
+                <p>
+                    Create a ToolPool listing with a picture,
+                    description, your tool availability, and your contact
+                    information.
+                </p>
+
+                <button onclick="window.location.href='loginform.html'">
+                    Post Your Tool
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+       
+
+        <p>
+           2026 ToolPool
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
