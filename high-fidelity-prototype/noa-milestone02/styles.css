@@ -1,0 +1,702 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #222;
+}
+
+/* Header */
+
+header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ccc;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 8%;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #222;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main layout */
+
+.hero {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 20px;
+
+  display: flex;
+  gap: 60px;
+}
+
+.intro {
+  flex: 1;
+}
+
+.intro h2 {
+  font-size: 36px;
+  margin-top: 20px;
+}
+
+.intro > p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Tool previews */
+
+.tool-list {
+  display: flex;
+  gap: 15px;
+}
+
+.tool-card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+
+  flex: 1;
+}
+
+.tool-card h4 {
+  margin-top: 0;
+}
+
+.tool-card p {
+  margin: 8px 0;
+}
+
+.tool-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* Signup form */
+
+.signup-container {
+  width: 400px;
+  background-color: white;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  padding: 30px;
+}
+
+.signup-container h2 {
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 12px;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+.login {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Admin Dashboard */
+
+.admin-main {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.admin-heading h2 {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.admin-heading p {
+  margin-top: 0;
+  color: #555;
+}
+
+/* Dashboard statistics */
+
+.admin-stats {
+  display: flex;
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.stat-card {
+  flex: 1;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.stat-card p {
+  margin-bottom: 0;
+}
+
+/* Reported users */
+
+.reported-users {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 25px;
+}
+
+.reported-users h2 {
+  margin-top: 0;
+}
+
+/* Table */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  background-color: #eee;
+}
+
+th,
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Admin buttons */
+
+.view-button,
+.remove-button {
+  margin: 0 5px 0 0;
+  padding: 8px 12px;
+}
+
+.view-button {
+  background-color: #333;
+}
+
+.remove-button {
+  background-color: #a83232;
+}
+
+/* =========================
+   MAIN HOMEPAGE BUTTONS
+========================= */
+
+.main-actions {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.large-action-button {
+    padding: 18px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 230px;
+}
+
+
+/* =========================
+   LISTINGS SECTION
+========================= */
+
+.listings-section {
+    max-width: 1100px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.listings-section h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.listings-description {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 35px;
+    color: #555;
+}
+
+/* Listings  */
+/* =========================
+   TOOL-DETAILS 
+========================= */
+
+.tool-details-page {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.tool-details-container {
+    display: flex;
+    gap: 40px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 30px;
+}
+
+
+/* =========================
+   TOOL IMAGE
+========================= */
+
+.tool-details-image {
+    width: 45%;
+    background-color: #eef8fc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tool-details-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+}
+
+
+/* =========================
+   TOOL INFO
+========================= */
+
+.tool-details-info {
+    width: 55%;
+}
+
+.tool-details-info h2 {
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.details-category {
+    color: #777;
+    font-size: 17px;
+}
+
+
+/* =========================
+   RATING
+========================= */
+
+.details-rating {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.details-rating span {
+    color: #a83232;
+    font-size: 22px;
+}
+
+.details-rating strong {
+    margin-left: 10px;
+    font-size: 18px;
+}
+
+.details-rating p {
+    margin-bottom: 0;
+    color: #555;
+}
+
+
+/* =========================
+   INFORMATION BOXES
+========================= */
+
+.details-box {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.details-box h3 {
+    margin-top: 0;
+}
+
+.details-box p {
+    margin: 8px 0;
+}
+
+
+/* =========================
+   CONTACT BUTTON
+========================= */
+
+.contact-owner-button {
+    background-color: #333;
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.contact-owner-button:hover {
+    background-color: #555;
+}
+
+
+.full-reviews {
+    background-color: white;
+    border: 1px solid #ccc;
+    margin-top: 30px;
+    padding: 30px;
+}
+
+.full-reviews h2 {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+.overall-rating {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+.overall-rating strong {
+    font-size: 24px;
+}
+
+.overall-rating p:first-of-type {
+    color: #a83232;
+    font-size: 22px;
+}
+
+
+/* reviews */
+
+.review-card {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+}
+
+.review-card:last-child {
+    border-bottom: none;
+}
+
+.review-header {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.review-header strong {
+    color: #a83232;
+}
+
+.review-card p {
+    line-height: 1.5;
+}
+
+
+/* =========================
+LISTINGS
+========================= */
+
+.back-to-listings {
+    margin-top: 25px;
+}
+
+.back-to-listings a {
+    color: #333;
+    text-decoration: none;
+}
+
+.back-to-listings a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   Listings
+========================= */
+
+/* =========================
+   TOOLPOOL LISTINGS PAGE
+========================= */
+
+.listings-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.listings-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.listings-header h2 {
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.listings-header p {
+    font-size: 18px;
+    color: #555;
+}
+
+
+/* =========================
+   LISTING GRID
+========================= */
+
+.listing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+
+/* =========================
+   LISTING CARD
+========================= */
+
+.listing-card {
+    display: flex;
+    background-color: white;
+    border: 1px solid #ccc;
+    min-height: 260px;
+}
+
+
+/* =========================
+   IMAGE AREA
+========================= */
+
+.listing-image {
+    width: 45%;
+    min-height: 260px;
+    background-color: #eef8fc;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.listing-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 15px;
+}
+
+
+/* =========================
+   AVAILABLE BADGE
+========================= */
+
+.listing-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 2;
+}
+
+
+/* =========================
+   LISTING INFORMATION
+========================= */
+
+.listing-info {
+    width: 55%;
+    padding: 22px;
+}
+
+.listing-info h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 21px;
+}
+
+.category {
+    color: #777;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.listing-description {
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.availability {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   RATING / BUTTON
+========================= */
+
+.listing-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.rating {
+    color: #a83232;
+    font-size: 16px;
+}
+
+.rating span {
+    color: #333;
+    margin-left: 5px;
+}
+
+
+/* =========================
+   VIEW LISTING BUTTON
+========================= */
+
+.listing-button {
+    display: inline-block;
+    background-color: #333;
+    color: white;
+    padding: 10px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.listing-button:hover {
+    background-color: #555;
+}
+
+/* =========================
+   post-listing
+========================= */
+
+/* =========================
+   POST LISTING PAGE
+========================= */
+
+.post-listing-container {
+    width: 650px;
+    margin: 50px auto;
+    padding: 35px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.post-listing-container h2 {
+    margin-top: 0;
+    font-size: 32px;
+}
+
+.post-listing-container > p {
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.post-listing-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-listing-container label {
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+
+.post-listing-container input,
+.post-listing-container select,
+.post-listing-container textarea {
+    padding: 11px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+.post-listing-container textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.post-listing-container button {
+    margin-top: 25px;
+}
