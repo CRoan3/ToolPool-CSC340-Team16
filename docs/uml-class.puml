@@ -1,0 +1,78 @@
+@startuml
+' ToolPool API domain model
+' Render: docker run --rm -v "%cd%:/data" plantuml/plantuml -tpng /data/uml-class.puml
+
+title ToolPool API Domain Model
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam linetype polyline
+skinparam nodesep 70
+skinparam ranksep 80
+skinparam class {
+  BackgroundColor white
+  HeaderBackgroundColor #BADDE6
+  BorderColor #555555
+  ArrowColor #555555
+}
+hide circle
+hide methods
+
+class User {
+  - id: Long {PK}
+  - name: String
+  - email: String {unique}
+  - password: String
+  - phoneNumber: String [0..1]
+  - location: String [0..1]
+  - role: String {USER, ADMIN}
+  - accountStatus: String {ACTIVE, BANNED}
+  - createdAt: LocalDateTime
+}
+
+class Tool {
+  - id: Long {PK}
+  - name: String
+  - description: String
+  - category: String [0..1]
+  - dailyPrice: BigDecimal
+  - depositAmount: BigDecimal [0..1]
+  - available: Boolean
+}
+
+class Rental {
+  - id: Long {PK}
+  - startDate: LocalDate
+  - endDate: LocalDate
+  - status: String {REQUESTED, ACTIVE, COMPLETED, CANCELLED}
+  - totalPrice: BigDecimal
+}
+
+class Review {
+  - id: Long {PK}
+  - rating: Integer {1..5}
+  - comment: String [0..1]
+  - reviewDate: LocalDateTime
+}
+
+class Report {
+  - id: Long {PK}
+  - reason: String
+  - status: String {OPEN, RESOLVED}
+  - reportDate: LocalDateTime
+}
+
+note bottom of Review
+  Reviewer must be the rental's renter,
+  and the rental must be COMPLETED.
+end note
+
+User "1" -- "0..*" Tool : "owns\n(owner)"
+User "1" -- "0..*" Rental : "rents\n(renter)"
+Tool "1" -- "0..*" Rental : rented through
+Rental "1" -- "0..1" Review : reviewed by
+User "1" -- "0..*" Review : "writes\n(reviewer)"
+User "1" -- "0..*" Report : "files\n(reporter)"
+User "1" -- "0..*" Report : "is reported in\n(reportedUser)"
+
+@enduml
