@@ -8,10 +8,10 @@
 		<version>4.1.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
+	<groupId>com.csc340</groupId>
 	<artifactId>toolpool</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
+	<name>toolpool</name>
 	<description/>
 	<url/>
 	<licenses>
@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>27</java.version>
+		<java.version>25</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
