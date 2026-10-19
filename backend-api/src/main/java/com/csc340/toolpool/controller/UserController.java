@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.csc340.toolpool.dto.UserUpdateRequest;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.net.URI;
 
@@ -30,5 +34,20 @@ public class UserController {
         UserResponse user = userService.register(request);
         // 201 Created, with a Location header pointing at the new user.
         return ResponseEntity.created(URI.create("/api/users/" + user.id())).body(user);
+    }
+
+    // GET /api/users/{id} (issue #39) -> 200, 404 if the id doesn't exist.
+    // @PathVariable takes the {id} part of the URL, e.g. /api/users/3 -> id = 3.
+    @GetMapping("/{id}")
+    public UserResponse getProfile(@PathVariable Long id) {
+        return userService.getProfile(id);
+    }
+
+    // PUT /api/users/{id} (issue #39) -> 200, 400 if invalid, 404 if missing, 409
+    // if email taken.
+    @PutMapping("/{id}")
+    public UserResponse updateProfile(@PathVariable Long id,
+            @Valid @RequestBody UserUpdateRequest request) {
+        return userService.updateProfile(id, request);
     }
 }

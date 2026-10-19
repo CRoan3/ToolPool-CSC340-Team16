@@ -32,9 +32,11 @@ Objects are linked by id in request bodies (for example `"ownerId": 1`), not by 
 
 ## Users
 
-| Method | Path         | Purpose           | Response code | Error codes | User story                                         | Implemented by   |
-| ------ | ------------ | ----------------- | ------------- | ----------- | -------------------------------------------------- | ---------------- |
-| `POST` | `/api/users` | Create an account | `201 Created` | `400, 409`  | [US-1](../docs/Requirements%20-%20ToolPool.md#L55) | Christopher Roan |
+| Method | Path              | Purpose                                              | Response code | Error codes     | User story                                             | Implemented by   |
+| ------ | ----------------- | ---------------------------------------------------- | ------------- | --------------- | ------------------------------------------------------ | ---------------- |
+| `POST` | `/api/users`      | Create an account                                    | `201 Created` | `400, 409`      | [US-1](../docs/Requirements%20-%20ToolPool.md#L55)     | Christopher Roan |
+| `GET`  | `/api/users/{id}` | View a user's profile                                | `200 OK`      | `404`           | [Story 7](../docs/Requirements%20-%20ToolPool.md#L111) | Christopher Roan |
+| `PUT`  | `/api/users/{id}` | Edit a user's profile (name, email, phone, location) | `200 OK`      | `400, 404, 409` | [Story 7](../docs/Requirements%20-%20ToolPool.md#L111) | Christopher Roan |
 
 New users are always created with `role` = `USER` and `accountStatus` = `ACTIVE`; these fields
 cannot be set in the request. Passwords are accepted on registration and never included in responses.
