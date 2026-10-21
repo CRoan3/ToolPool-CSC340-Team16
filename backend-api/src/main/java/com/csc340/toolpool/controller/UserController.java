@@ -13,8 +13,12 @@ import com.csc340.toolpool.dto.UserUpdateRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import com.csc340.toolpool.dto.UserStatusUpdateRequest;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.net.URI;
+import java.util.List;
 
 // Maps HTTP requests under /api/users to the user service.
 @RestController
@@ -49,5 +53,25 @@ public class UserController {
     public UserResponse updateProfile(@PathVariable Long id,
             @Valid @RequestBody UserUpdateRequest request) {
         return userService.updateProfile(id, request);
+    }
+
+    // GET /api/users (issue #40) -> 200. Optional ?accountStatus=ACTIVE or BANNED (400 if anything else).
+    @GetMapping
+    public List<UserResponse> listUsers(@RequestParam(required = false) String accountStatus) {
+        return userService.listUsers(accountStatus);
+    }
+
+    // PUT /api/users/{id}/status (issue #40) -> 200, 400 if invalid status, 404 if missing.
+    @PutMapping("/{id}/status")
+    public UserResponse updateAccountStatus(@PathVariable Long id,
+            @Valid @RequestBody UserStatusUpdateRequest request) {
+        return userService.updateAccountStatus(id, request);
+    }
+
+    // DELETE /api/users/{id} (issue #40) -> 204, 404 if missing, 409 if the user has linked records.
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
     }
 }
