@@ -92,5 +92,15 @@ public class RentalService {
                 .map(RentalResponse::from)
                 .toList();
     }
+
+    public RentalResponse completeRental(Long id) {
+    Rental rental = rentalRepository.findById(id)
+            .orElseThrow(() -> new NotFoundException(
+                    "Rental " + id + " was not found."));
+
+    rental.setStatus(RentalStatus.COMPLETED);
+
+    return RentalResponse.from(rentalRepository.save(rental));
+}
 }
 

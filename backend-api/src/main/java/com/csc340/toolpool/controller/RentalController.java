@@ -7,6 +7,8 @@ import com.csc340.toolpool.service.RentalService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.net.URI;
 import java.util.List;
@@ -43,4 +45,10 @@ public class RentalController {
 
         return rentalService.getRentalsByRenter(renterId);
     }
+
+    @PatchMapping("/{id}/complete")
+public RentalResponse completeRental(@PathVariable Long id) {
+    return rentalService.completeRental(id);
+}
+
 }
