@@ -15,7 +15,7 @@ Editable source: [`docs/uml-class.puml`](../docs/uml-class.puml)
 **Base URL:**
 
 - local: http://localhost:8080/api
-- production: https://YOUR-SERVICE.onrender.com/api
+- production: [https://YOUR-SERVICE.onrender.com/api](https://toolpool-csc340-team16-konz.onrender.com/)
 
 > **Cold start:** the production API runs on Render's free tier, which sleeps after about 15 minutes
 > of inactivity. The first request after that can take up to a minute while it wakes up. Neon also
