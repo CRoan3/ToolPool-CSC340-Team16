@@ -2,7 +2,9 @@ package com.csc340.toolpool.controller;
 
 import com.csc340.toolpool.service.BadRequestException;
 import com.csc340.toolpool.service.ConflictException;
+import com.csc340.toolpool.service.ForbiddenException;
 import com.csc340.toolpool.service.NotFoundException;
+import com.csc340.toolpool.service.UnauthorizedException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,18 @@ public class ApiExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Map<String, String>> handleNotFound(NotFoundException exception) {
         return error(HttpStatus.NOT_FOUND, exception.getMessage());
+    }
+
+    // 401: wrong login details (unknown email or wrong password)
+    @ExceptionHandler(UnauthorizedException.class)
+    public ResponseEntity<Map<String, String>> handleUnauthorized(UnauthorizedException exception) {
+        return error(HttpStatus.UNAUTHORIZED, exception.getMessage());
+    }
+
+    // 403: valid request, but the user isn't allowed (e.g. a banned account logging in)
+    @ExceptionHandler(ForbiddenException.class)
+    public ResponseEntity<Map<String, String>> handleForbidden(ForbiddenException exception) {
+        return error(HttpStatus.FORBIDDEN, exception.getMessage());
     }
 
     // 409: duplicates or invalid state changes.
