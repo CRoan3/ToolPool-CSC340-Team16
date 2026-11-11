@@ -12,7 +12,6 @@
       <h1>
             <a href="index.html">ToolPool</a>
         </h1>
-
       <nav>
             <a href="listings.html">Listings</a>
             <a href="admin.html">Admin</a>
@@ -26,30 +25,45 @@
         <p>Monitor ToolPool users and review reported accounts.</p>
       </div>
 
+      <!-- Results of admin actions (ban, resolve, remove) and load errors, from js/admin.js -->
+      <p id="admin-message" class="message" hidden></p>
+
+      <!-- Stats are counted from the API by js/admin.js -->
       <section class="admin-stats">
         <div class="stat-card">
-          <h3>142</h3>
+          <h3 id="stat-users">–</h3>
           <p>Total Users</p>
         </div>
 
         <div class="stat-card">
-          <h3>87</h3>
+          <h3 id="stat-listings">–</h3>
           <p>Active Listings</p>
         </div>
 
         <div class="stat-card">
-          <h3>24</h3>
-          <p>Active Rentals</p>
+          <h3 id="stat-banned">–</h3>
+          <p>Banned Users</p>
         </div>
 
         <div class="stat-card">
-          <h3>3</h3>
-          <p>Reported Users</p>
+          <h3 id="stat-reports">–</h3>
+          <p>Open Reports</p>
         </div>
       </section>
 
+      <!-- Story 6: reported users -->
       <section class="reported-users">
-        <h2>Reported Users</h2>
+        <div class="admin-section-header">
+          <h2>Reported Users</h2>
+          <label for="report-filter">
+            Show
+            <select id="report-filter">
+              <option value="OPEN">Open reports</option>
+              <option value="RESOLVED">Resolved reports</option>
+              <option value="">All reports</option>
+            </select>
+          </label>
+        </div>
 
         <table>
           <thead>
@@ -62,39 +76,30 @@
             </tr>
           </thead>
 
-          <tbody>
-            <tr>
-              <td>Bob123</td>
-              <td>3</td>
-              <td>Fraudulent listing</td>
-              <td>Active</td>
-              <td>
-                <button class="view-button">View</button>
-                <button class="remove-button">Remove</button>
-              </td>
-            </tr>
+          <tbody id="reported-users-body">
+            <tr><td colspan="5">Loading reports...</td></tr>
+          </tbody>
+        </table>
+      </section>
 
-            <tr>
-              <td>JohnDoe</td>
-              <td>2</td>
-              <td>Tool not returned</td>
-              <td>Active</td>
-              <td>
-                <button class="view-button">View</button>
-                <button class="remove-button">Remove</button>
-              </td>
-            </tr>
+      <!-- Story 1: every user, so suspicious profiles can be banned or removed even without a report -->
+      <section class="reported-users">
+        <h2>All Users</h2>
 
+        <table>
+          <thead>
             <tr>
-              <td>JaneSmith</td>
-              <td>1</td>
-              <td>Damaged tool dispute</td>
-              <td>Active</td>
-              <td>
-                <button class="view-button">View</button>
-                <button class="remove-button">Remove</button>
-              </td>
+              <th>ID</th>
+              <th>User</th>
+              <th>Email</th>
+              <th>Location</th>
+              <th>Account Status</th>
+              <th>Actions</th>
             </tr>
+          </thead>
+
+          <tbody id="all-users-body">
+            <tr><td colspan="6">Loading users...</td></tr>
           </tbody>
         </table>
       </section>
@@ -104,5 +109,6 @@
       <p>&copy; 2026 ToolPool</p>
     </footer>
       <script src="js/api.js"></script>
+      <script src="js/admin.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.csc340.toolpool.service;
 
+import com.csc340.toolpool.dto.LoginRequest;
 import com.csc340.toolpool.dto.UserRegistrationRequest;
 import com.csc340.toolpool.dto.UserResponse;
 import com.csc340.toolpool.dto.UserStatusUpdateRequest;
@@ -54,6 +55,24 @@ public class UserService {
 
         // Save, then return the response DTO (no password).
         return UserResponse.from(userRepository.save(user));
+    }
+
+    // Issue #59: log in with an email (used as a username) and password.
+    // 401 if the email or password is wrong; 403 if the account is banned.
+    @Transactional(readOnly = true)
+    public UserResponse login(LoginRequest request) {
+        // Same message for "no such email" and "wrong password", so the login form
+        // never reveals which emails have accounts.
+        User user = userRepository.findByEmailIgnoreCase(request.email().trim())
+                .filter(found -> found.getPassword().equals(request.password())) // TODO: BCrypt later
+                .orElseThrow(() -> new UnauthorizedException("Invalid email or password."));
+
+        // Checked only after the password matches, so a wrong guess can't tell
+        // someone that an account exists and is banned.
+        if ("BANNED".equals(user.getAccountStatus())) {
+            throw new ForbiddenException("This account has been banned.");
+        }
+        return UserResponse.from(user);
     }
 
     // Story 7: view another user's profile. 404 if the id doesn't exist.
