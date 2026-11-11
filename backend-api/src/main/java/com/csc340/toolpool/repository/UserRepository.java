@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 // Data access for the users table. JpaRepository provides save, findById, findAll, deleteById.
 @Repository
@@ -13,6 +14,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // Spring writes the SQL from the name: "does any user have this email, ignoring
     // case?"
     boolean existsByEmailIgnoreCase(String email);
+
+    // Login: find the account for an email, ignoring case. Empty if no account has it.
+    Optional<User> findByEmailIgnoreCase(String email);
 
     // All users with one account status (e.g. BANNED), for the admin user list.
     List<User> findByAccountStatusOrderByIdAsc(String accountStatus);

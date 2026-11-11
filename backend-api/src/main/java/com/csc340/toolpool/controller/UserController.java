@@ -1,5 +1,6 @@
 package com.csc340.toolpool.controller;
 
+import com.csc340.toolpool.dto.LoginRequest;
 import com.csc340.toolpool.dto.UserRegistrationRequest;
 import com.csc340.toolpool.dto.UserResponse;
 import com.csc340.toolpool.service.UserService;
@@ -38,6 +39,14 @@ public class UserController {
         UserResponse user = userService.register(request);
         // 201 Created, with a Location header pointing at the new user.
         return ResponseEntity.created(URI.create("/api/users/" + user.id())).body(user);
+    }
+
+    // POST /api/users/login (issue #59) -> 200 with the user, 400 if a field is blank,
+    // 401 if the email or password is wrong, 403 if the account is banned.
+    // POST (not GET) so the password travels in the request body, never in the URL.
+    @PostMapping("/login")
+    public UserResponse login(@Valid @RequestBody LoginRequest request) {
+        return userService.login(request);
     }
 
     // GET /api/users/{id} (issue #39) -> 200, 404 if the id doesn't exist.
