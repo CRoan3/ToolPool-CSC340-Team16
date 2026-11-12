@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolPool - Tool Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+    <h1><a href="index.html">ToolPool</a></h1>
+    <nav>
+        <a href="listings.html">Listings</a>
+        <a href="my-tools.html">My Tools</a>
+        <a href="admin.html">Admin</a>
+        <a href="login.html" id="auth-link">Login / Sign Up</a>
+    </nav>
+</header>
+
+<main class="tool-details-page">
+    <div class="tool-details-container">
+
+        <div class="tool-details-image">
+            <img id="tool-image" src="images/testtool_.jpg" alt="Tool image">
+        </div>
+
+        <div class="tool-details-info">
+            <h2 id="tool-name">Loading tool...</h2>
+            <p class="details-category" id="tool-category"></p>
+
+            <h3>Description</h3>
+            <p id="tool-description"></p>
+
+            <div class="details-box">
+                <h3>Pricing</h3>
+                <p><strong>Daily Price:</strong> <span id="tool-price"></span></p>
+                <p><strong>Deposit:</strong> <span id="tool-deposit"></span></p>
+                <p><strong>Availability:</strong> <span id="tool-availability"></span></p>
+            </div>
+
+            <div class="details-box">
+                <h3>Tool Owner</h3>
+                <p><strong>Name:</strong> <span id="owner-name"></span></p>
+                <p><strong>Location:</strong> <span id="owner-location"></span></p>
+                <p><strong>Phone:</strong> <span id="owner-phone"></span></p>
+            </div>
+
+            <div class="details-box" id="booking-section">
+                <h3>Book This Tool</h3>
+
+                <div id="booking-message" class="message" hidden></div>
+
+                <form id="booking-form">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" id="start-date" required>
+
+                    <label for="end-date">End Date</label>
+                    <input type="date" id="end-date" required>
+
+                    <button type="submit" class="contact-owner-button">
+                        Book Tool
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-to-listings">
+        <a href="listings.html">Back to Listings</a>
+    </div>
+</main>
+
+<footer>
+    <p>2026 ToolPool</p>
+</footer>
+
+<script src="js/api.js"></script>
+<script src="js/tool-details.js"></script>
+</body>
+
+</html>

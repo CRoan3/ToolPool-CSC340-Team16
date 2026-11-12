@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ToolPool - Listings</title>
 
@@ -11,232 +12,40 @@
 
 <body>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
-
     <header>
-
         <h1>
             <a href="index.html">ToolPool</a>
         </h1>
 
         <nav>
             <a href="listings.html">Listings</a>
+            <a href="my-tools.html">My Tools</a>
             <a href="admin.html">Admin</a>
             <a href="login.html" id="auth-link">Login / Sign Up</a>
-            <a href="my-tools.html">My Tools</a>
         </nav>
-
     </header>
-
-
-    <!-- =========================
-         LISTINGS
-    ========================== -->
 
     <main class="listings-page">
 
         <div class="listings-header">
-
             <h2>Tools Available in Your Area</h2>
-
-
         </div>
 
-
-        <div class="listing-grid">
-
-
-            <!-- =========================
-                 POWER DRILL
-            ========================== -->
-
-            <div class="listing-card">
-
-                <div class="listing-image">
-
-
-                    <img
-                        src="images/powerdrill.jpg"
-                        alt="Power Drill"
-                    >
-
-                </div>
-
-
-                <div class="listing-info">
-
-                    <h3>Power Drill</h3>
-
-                    <p class="category">
-                        Drill
-                    </p>
-
-                    <p class="listing-description">
-                        Cordless power drill available.
-                    </p>
-
-                    <p class="availability">
-                        <strong>Available:</strong>
-                        September 25 - October 5
-                    </p>
-
-
-                    <div class="listing-bottom">
-
-                        <div class="rating">
-                            <span>4.9/5</span>
-                        </div>
-
-                        <!-- THIS WORKS -->
-
-                        <a
-                            href="tool-details.html"
-                            class="listing-button"
-                        >
-                            View Listing
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-                 POWER WASHER
-            ========================== -->
-
-            <div class="listing-card">
-
-                <div class="listing-image">
-
-                    <img
-                        src="images/powerwasher.jpg"
-                        alt="Power Washer"
-                    >
-
-                </div>
-
-
-                <div class="listing-info">
-
-                    <h3>Power Washer</h3>
-
-                    <p class="category">
-                       Washer
-                    </p>
-
-                    <p class="listing-description">
-                        Power washer available.
-                    </p>
-
-                    <p class="availability">
-                        <strong>Available:</strong>
-                        September 27 - October 10
-                    </p>
-
-
-                    <div class="listing-bottom">
-
-                        <div class="rating">
-                            <span>4.7/5</span>
-                        </div>
-
-                        <!-- Not connected yet -->
-
-                        <a
-                            href="#"
-                            class="listing-button"
-                        >
-                            View Listing
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- =========================
-                 POWER SAW
-            ========================== -->
-
-            <div class="listing-card">
-
-                <div class="listing-image">
-
-
-                    <img
-                        src="images/powersaw.jpg"
-                        alt="Power Saw"
-                    >
-
-                </div>
-
-
-                <div class="listing-info">
-
-                    <h3>Power Saw</h3>
-
-                    <p class="category">
-                        Power Tool
-                    </p>
-
-                    <p class="listing-description">
-                        Power saw available.
-                    </p>
-
-                    <p class="availability">
-                        <strong>Available:</strong>
-                        October 1 - October 15
-                    </p>
-
-
-                    <div class="listing-bottom">
-
-                        <div class="rating">
-                            <span>5/5</span>
-                        </div>
-
-                        <!-- Not working -->
-
-                        <a
-                            href="#"
-                            class="listing-button"
-                        >
-                            View Listing
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
+        <div id="message" class="message" hidden></div>
+
+        <!-- Cards are built by js/listings.js from GET /api/tools -->
+        <div id="listing-grid" class="listing-grid">
+            <p>Loading tools...</p>
         </div>
 
     </main>
 
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
     <footer>
-
-        <p>
-            2026 ToolPool
-        </p>
-
-
+        <p>2026 ToolPool</p>
     </footer>
 
     <script src="js/api.js"></script>
+    <script src="js/listings.js"></script>
 </body>
 
 </html>

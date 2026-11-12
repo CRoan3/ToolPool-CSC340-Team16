@@ -1,0 +1,347 @@
+diff --git a/backend-api/src/main/resources/static/js/api.js b/backend-api/src/main/resources/static/js/api.js
+index 9201782..0104c01 100644
+--- a/backend-api/src/main/resources/static/js/api.js
++++ b/backend-api/src/main/resources/static/js/api.js
+@@ -110,6 +110,15 @@ const ToolPool = {
+             .replaceAll("'", "&#39;");
+     },
+ 
++    // Picks a picture for a tool from the images we have, based on its name or category.
++    imageFor(tool) {
++        const text = ((tool.name || "") + " " + (tool.category || "")).toLowerCase();
++        if (text.includes("drill")) return "images/powerdrill.jpg";
++        if (text.includes("wash")) return "images/powerwasher.jpg";
++        if (text.includes("saw")) return "images/powersaw.jpg";
++        return "images/testtool_.jpg";
++    },
++
+     // Formats a number as dollars, e.g. 25 -> "$25.00".
+     formatMoney(amount) {
+         return "$" + Number(amount ?? 0).toFixed(2);
+diff --git a/backend-api/src/main/resources/static/js/listings.js b/backend-api/src/main/resources/static/js/listings.js
+new file mode 100644
+index 0000000..d9b7497
+--- /dev/null
++++ b/backend-api/src/main/resources/static/js/listings.js
+@@ -0,0 +1,40 @@
++// Listings page: shows every available tool from GET /api/tools.
++// Unlisted tools are not returned by the API, so they disappear from this page.
++
++const grid = document.getElementById("listing-grid");
++const messageBox = document.getElementById("message");
++
++async function loadListings() {
++    try {
++        const tools = await ToolPool.get("/tools");
++
++        if (!tools.length) {
++            grid.innerHTML = "<p>No tools are listed right now. Check back soon!</p>";
++            return;
++        }
++
++        grid.innerHTML = tools.map(tool => `
++            <div class="listing-card">
++                <div class="listing-image">
++                    <img src="${ToolPool.imageFor(tool)}" alt="${ToolPool.escapeHtml(tool.name)}">
++                </div>
++                <div class="listing-info">
++                    <h3>${ToolPool.escapeHtml(tool.name)}</h3>
++                    <p class="category">${ToolPool.escapeHtml(tool.category || "Uncategorized")}</p>
++                    <p class="listing-description">${ToolPool.escapeHtml(tool.description)}</p>
++                    <p class="availability">
++                        <strong>Daily price:</strong> ${ToolPool.formatMoney(tool.dailyPrice)}
++                    </p>
++                    <div class="listing-bottom">
++                        <a href="tool-details.html?id=${tool.id}" class="listing-button">View Listing</a>
++                    </div>
++                </div>
++            </div>
++        `).join("");
++    } catch (error) {
++        grid.innerHTML = "";
++        ToolPool.showMessage(messageBox, error.message, "error");
++    }
++}
++
++loadListings();
+diff --git a/backend-api/src/main/resources/static/js/tool-details.js b/backend-api/src/main/resources/static/js/tool-details.js
+index e4578e8..2e2f3e3 100644
+--- a/backend-api/src/main/resources/static/js/tool-details.js
++++ b/backend-api/src/main/resources/static/js/tool-details.js
+@@ -27,6 +27,9 @@ document.addEventListener("DOMContentLoaded", async () => {
+         document.getElementById("tool-name").textContent =
+             currentTool.name;
+ 
++        document.getElementById("tool-image").src =
++            ToolPool.imageFor(currentTool);
++
+         document.getElementById("tool-category").textContent =
+             currentTool.category || "Uncategorized";
+ 
+diff --git a/backend-api/src/main/resources/static/listings.html b/backend-api/src/main/resources/static/listings.html
+index 5493cd5..70a7ecc 100644
+--- a/backend-api/src/main/resources/static/listings.html
++++ b/backend-api/src/main/resources/static/listings.html
+@@ -3,6 +3,7 @@
+ 
+ <head>
+     <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+     <title>ToolPool - Listings</title>
+ 
+@@ -11,232 +12,40 @@
+ 
+ <body>
+ 
+-    <!-- =========================
+-         HEADER
+-    ========================== -->
+-
+     <header>
+-
+         <h1>
+             <a href="index.html">ToolPool</a>
+         </h1>
+ 
+         <nav>
+             <a href="listings.html">Listings</a>
++            <a href="my-tools.html">My Tools</a>
+             <a href="admin.html">Admin</a>
+             <a href="login.html" id="auth-link">Login / Sign Up</a>
+-            <a href="my-tools.html">My Tools</a>
+         </nav>
+-
+     </header>
+ 
+-
+-    <!-- =========================
+-         LISTINGS
+-    ========================== -->
+-
+     <main class="listings-page">
+ 
+         <div class="listings-header">
+-
+             <h2>Tools Available in Your Area</h2>
+-
+-
+         </div>
+ 
++        <div id="message" class="message" hidden></div>
+ 
+-        <div class="listing-grid">
+-
+-
+-            <!-- =========================
+-                 POWER DRILL
+-            ========================== -->
+-
+-            <div class="listing-card">
+-
+-                <div class="listing-image">
+-
+-
+-                    <img
+-                        src="images/powerdrill.jpg"
+-                        alt="Power Drill"
+-                    >
+-
+-                </div>
+-
+-
+-                <div class="listing-info">
+-
+-                    <h3>Power Drill</h3>
+-
+-                    <p class="category">
+-                        Drill
+-                    </p>
+-
+-                    <p class="listing-description">
+-                        Cordless power drill available.
+-                    </p>
+-
+-                    <p class="availability">
+-                        <strong>Available:</strong>
+-                        September 25 - October 5
+-                    </p>
+-
+-
+-                    <div class="listing-bottom">
+-
+-                        <div class="rating">
+-                            <span>4.9/5</span>
+-                        </div>
+-
+-                        <!-- THIS WORKS -->
+-
+-                        <a
+-                            href="tool-details.html"
+-                            class="listing-button"
+-                        >
+-                            View Listing
+-                        </a>
+-
+-                    </div>
+-
+-                </div>
+-
+-            </div>
+-
+-
+-            <!-- =========================
+-                 POWER WASHER
+-            ========================== -->
+-
+-            <div class="listing-card">
+-
+-                <div class="listing-image">
+-
+-                    <img
+-                        src="images/powerwasher.jpg"
+-                        alt="Power Washer"
+-                    >
+-
+-                </div>
+-
+-
+-                <div class="listing-info">
+-
+-                    <h3>Power Washer</h3>
+-
+-                    <p class="category">
+-                       Washer
+-                    </p>
+-
+-                    <p class="listing-description">
+-                        Power washer available.
+-                    </p>
+-
+-                    <p class="availability">
+-                        <strong>Available:</strong>
+-                        September 27 - October 10
+-                    </p>
+-
+-
+-                    <div class="listing-bottom">
+-
+-                        <div class="rating">
+-                            <span>4.7/5</span>
+-                        </div>
+-
+-                        <!-- Not connected yet -->
+-
+-                        <a
+-                            href="#"
+-                            class="listing-button"
+-                        >
+-                            View Listing
+-                        </a>
+-
+-                    </div>
+-
+-                </div>
+-
+-            </div>
+-
+-
+-            <!-- =========================
+-                 POWER SAW
+-            ========================== -->
+-
+-            <div class="listing-card">
+-
+-                <div class="listing-image">
+-
+-
+-                    <img
+-                        src="images/powersaw.jpg"
+-                        alt="Power Saw"
+-                    >
+-
+-                </div>
+-
+-
+-                <div class="listing-info">
+-
+-                    <h3>Power Saw</h3>
+-
+-                    <p class="category">
+-                        Power Tool
+-                    </p>
+-
+-                    <p class="listing-description">
+-                        Power saw available.
+-                    </p>
+-
+-                    <p class="availability">
+-                        <strong>Available:</strong>
+-                        October 1 - October 15
+-                    </p>
+-
+-
+-                    <div class="listing-bottom">
+-
+-                        <div class="rating">
+-                            <span>5/5</span>
+-                        </div>
+-
+-                        <!-- Not working -->
+-
+-                        <a
+-                            href="#"
+-                            class="listing-button"
+-                        >
+-                            View Listing
+-                        </a>
+-
+-                    </div>
+-
+-                </div>
+-
+-            </div>
+-
+-
++        <!-- Cards are built by js/listings.js from GET /api/tools -->
++        <div id="listing-grid" class="listing-grid">
++            <p>Loading tools...</p>
+         </div>
+ 
+     </main>
+ 
+-
+-    <!-- =========================
+-         FOOTER
+-    ========================== -->
+-
+     <footer>
+-
+-        <p>
+-            2026 ToolPool
+-        </p>
+-
+-
++        <p>2026 ToolPool</p>
+     </footer>
+ 
+     <script src="js/api.js"></script>
++    <script src="js/listings.js"></script>
+ </body>
+ 
+-</html>
+\ No newline at end of file
++</html>
+diff --git a/backend-api/src/main/resources/static/tool-details.html b/backend-api/src/main/resources/static/tool-details.html
+index 7239536..06a13af 100644
+--- a/backend-api/src/main/resources/static/tool-details.html
++++ b/backend-api/src/main/resources/static/tool-details.html
+@@ -22,7 +22,7 @@
+     <div class="tool-details-container">
+ 
+         <div class="tool-details-image">
+-            <img src="images/powerdrill.jpg" alt="Tool image">
++            <img id="tool-image" src="images/testtool_.jpg" alt="Tool image">
+         </div>
+ 
+         <div class="tool-details-info">
