@@ -1,240 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <title>ToolPool - Power Drill</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolPool - Tool Details</title>
     <link rel="stylesheet" href="styles.css">
-
 </head>
-
 <body>
 
+<header>
+    <h1><a href="index.html">ToolPool</a></h1>
+    <nav>
+        <a href="listings.html">Listings</a>
+        <a href="my-tools.html">My Tools</a>
+        <a href="admin.html">Admin</a>
+        <a href="login.html" id="auth-link">Login / Sign Up</a>
+    </nav>
+</header>
 
-    <!-- =========================
-         HEADER
-    ========================== -->
+<main class="tool-details-page">
+    <div class="tool-details-container">
 
-    <header>
-
-        <h1>
-            <a href="index.html">ToolPool</a>
-        </h1>
-
-        <nav>
-            <a href="listings.html">Listings</a>
-            <a href="admin.html">Admin</a>
-            <a href="login.html" id="auth-link">Login / Sign Up</a>
-        </nav>
-
-    </header>
-
-
-    <!-- =========================
-         TOOL DETAILS
-    ========================== -->
-
-    <main class="tool-details-page">
-
-        <div class="tool-details-container">
-
-
-            <!-- =========================
-                 TOOL IMAGE
-            ========================== -->
-
-            <div class="tool-details-image">
-
-                <img
-                    src="images/powerdrill.jpg"
-                    alt="Power Drill"
-                >
-
-            </div>
-
-
-            <!-- =========================
-                 TOOL INFORMATION
-            ========================== -->
-
-            <div class="tool-details-info">
-
-                <h2>Power Drill</h2>
-
-                <p class="details-category">
-                    Power Tool
-                </p>
-
-
-                <!-- Rating -->
-
-                <div class="details-rating">
-
-
-                    <strong>
-                        4.9 / 5
-                    </strong>
-
-                    <p>
-                        24 Reviews
-                    </p>
-
-                </div>
-
-
-                <!-- Description -->
-
-                <h3>Description</h3>
-
-                <p>
-                    This cordless power drill is available for
-                    home improvement projects, furniture assembly,
-                    repairs, and other household projects.
-                </p>
-
-                <p>
-                    The drill is fully functional and comes with
-                    drill bits.
-                </p>
-
-
-                <!-- Availability -->
-
-                <div class="details-box">
-
-                    <h3>Availability</h3>
-
-                    <p>
-                        <strong>Available From:</strong>
-                        September 25, 2026
-                    </p>
-
-                    <p>
-                        <strong>Available Until:</strong>
-                        October 5, 2026
-                    </p>
-
-                </div>
-
-
-                <!-- Owner -->
-
-                <div class="details-box">
-
-                    <h3>Tool Owner</h3>
-
-                    <p>
-                        <strong>Name:</strong>
-                        Marcus Johnson
-                    </p>
-
-                    <p>
-                        <strong>Location:</strong>
-                        Greensboro, NC
-                    </p>
-
-                    <p>
-                        <strong>Phone:</strong>
-                        (111) 555-1234
-                    </p>
-
-                </div>
-
-
-                <!-- Contact -->
-
-                <button
-                    class="contact-owner-button"
-                >
-                    Contact Owner / Book Tool
-                </button>
-
-
-            </div>
-
+        <div class="tool-details-image">
+            <img src="images/powerdrill.jpg" alt="Tool image">
         </div>
 
+        <div class="tool-details-info">
+            <h2 id="tool-name">Loading tool...</h2>
+            <p class="details-category" id="tool-category"></p>
 
-        <!-- =========================
-             REVIEWS
-        ========================== -->
+            <h3>Description</h3>
+            <p id="tool-description"></p>
 
-        <section class="full-reviews">
-
-            <h2>Reviews</h2>
-
-
-            <!-- Overall rating -->
-
-            <div class="overall-rating">
-
-                <strong>4.9 out of 5</strong>
-
-                <p>
-                    Based on 24 reviews
-                </p>
-
+            <div class="details-box">
+                <h3>Pricing</h3>
+                <p><strong>Daily Price:</strong> <span id="tool-price"></span></p>
+                <p><strong>Deposit:</strong> <span id="tool-deposit"></span></p>
+                <p><strong>Availability:</strong> <span id="tool-availability"></span></p>
             </div>
 
-
-            <!-- Review 1 -->
-
-            <div class="review-card">
-
-                <div class="review-header">
-
-                    <span>
-                        Sarah M.
-                    </span>
-
-                </div>
-
-                <p>
-                    The drill worked perfectly for my home
-                    improvement project. The owner was very
-                    helpful and made the rental process easy.
-                </p>
-
+            <div class="details-box">
+                <h3>Tool Owner</h3>
+                <p><strong>Name:</strong> <span id="owner-name"></span></p>
+                <p><strong>Location:</strong> <span id="owner-location"></span></p>
+                <p><strong>Phone:</strong> <span id="owner-phone"></span></p>
             </div>
 
+            <div class="details-box" id="booking-section">
+                <h3>Book This Tool</h3>
 
+                <div id="booking-message" class="message" hidden></div>
 
-        </section>
+                <form id="booking-form">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" id="start-date" required>
 
+                    <label for="end-date">End Date</label>
+                    <input type="date" id="end-date" required>
 
-        <!-- =========================
-             BACK TO LISTINGS
-        ========================== -->
-
-        <div class="back-to-listings">
-
-            <a href="listings.html">
-                Back to Listings
-            </a>
-
+                    <button type="submit" class="contact-owner-button">
+                        Book Tool
+                    </button>
+                </form>
+            </div>
         </div>
+    </div>
 
-    </main>
+    <div class="back-to-listings">
+        <a href="listings.html">Back to Listings</a>
+    </div>
+</main>
 
+<footer>
+    <p>2026 ToolPool</p>
+</footer>
 
-    <!-- =========================
-         FOOTER
-    ========================== -->
-
-    <footer>
-
-        <p>
-            2026 ToolPool
-        </p>
-
-
-    </footer>
-
-
-    <script src="js/api.js"></script>
+<script src="js/api.js"></script>
+<script src="js/tool-details.js"></script>
 </body>
 
 </html>
