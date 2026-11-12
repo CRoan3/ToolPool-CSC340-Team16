@@ -1,7 +1,7 @@
 // ===== Tool Pool: tool-details.js =====
 // Covers user story 2 (book a tool) and user story 3 (edit / unlist a tool).
 //
-// !! If your JSON field names differ, change them ONLY in the FIELD map below.
+
 const FIELD = {
   name: "name",
   description: "description",
