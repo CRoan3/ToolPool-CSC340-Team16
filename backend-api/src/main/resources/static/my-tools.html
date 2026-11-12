@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolPool - My Tools</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">ToolPool</a></h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="listings.html">Listings</a>
+            <a href="my-tools.html">My Tools</a>
+            <a href="admin.html">Admin</a>
+            <a href="login.html" id="auth-link">Login / Sign Up</a>
+        </nav>
+    </header>
+
+    <main class="listings-page">
+        <div class="listings-header">
+            <h2>My Tools</h2>
+            <p>Manage your tool listings. You can edit or unlist your tools here.</p>
+        </div>
+
+        <div id="message" class="message" hidden></div>
+        <div id="tools-container" class="listing-grid">
+            <p>Loading your tools...</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>2026 ToolPool</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/my-tools.js"></script>
+</body>
+</html>

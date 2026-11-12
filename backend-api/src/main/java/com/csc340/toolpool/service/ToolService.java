@@ -90,4 +90,19 @@ public class ToolService {
         return ToolResponse.from(toolRepository.save(tool));
     }
 
+// get all tools owned by a user 
+@Transactional(readOnly = true)
+public List<ToolResponse> getToolsByOwner(Long ownerId) {
+
+    if (!userRepository.existsById(ownerId)) {
+        throw new NotFoundException(
+                "User " + ownerId + " was not found.");
+    }
+
+    return toolRepository.findByOwnerId(ownerId)
+            .stream()
+            .map(ToolResponse::from)
+            .toList();
+}
+
 }

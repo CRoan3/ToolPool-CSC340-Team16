@@ -59,5 +59,12 @@ public class ToolController {
     public ToolResponse unlistTool(@PathVariable Long id) {
         return toolService.unlistTool(id);
     }
+    // view all tools owned by a specific user
+    @GetMapping("/owner/{ownerId}")
+public List<ToolResponse> getToolsByOwner(
+        @PathVariable Long ownerId) {
+
+    return toolService.getToolsByOwner(ownerId);
+}
 
 }

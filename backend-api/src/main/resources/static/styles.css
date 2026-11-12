@@ -867,3 +867,59 @@ LISTINGS
 .message[hidden] {
     display: none;
 }
+/* My Tools page */
+.my-tool-card {
+    min-height: auto;
+}
+
+.my-tool-card .listing-info {
+    width: 100%;
+}
+
+.my-tool-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.my-tool-actions button,
+.edit-tool-form button {
+    margin: 0;
+}
+
+.edit-tool-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.edit-tool-form label {
+    font-weight: bold;
+    margin: 12px 0 5px;
+}
+
+.edit-tool-form input,
+.edit-tool-form textarea {
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+.edit-tool-form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.edit-tool-form button {
+    margin-top: 12px;
+}
+
+@media (max-width: 700px) {
+    .listing-grid {
+        grid-template-columns: 1fr;
+    }
+}
